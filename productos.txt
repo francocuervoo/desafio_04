@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "product": {
+      "title": "Heladera",
+      "price": 80000
+    }
+  },
+  {
+    "id": 2,
+    "product": {
+      "title": "Lavarropas",
+      "price": 60000
+    }
+  },
+  {
+    "id": 3,
+    "product": {
+      "title": "Microondas",
+      "price": 40000
+    }
+  },
+  {
+    "id": 4,
+    "product": {
+      "title": "Televisor",
+      "price": 70000
+    }
+  }
+]
