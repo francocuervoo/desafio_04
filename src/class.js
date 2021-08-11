@@ -1,5 +1,29 @@
 /*Importo el módulo fs*/ const fs = require("fs");
 
+//Productos
+// let p1 = {
+//   title: "Heladera",
+//   price: 80000,
+//   thumbnail: "https://imgur.com/GkEYT7d",
+// };
+
+// let p2 = {
+//   title: "Lavarropas",
+//   price: 60000,
+//   thumbnail: "https://imgur.com/RRNmknL",
+// };
+// let p3 = {
+//   title: "Microondas",
+//   price: 40000,
+//   thumbnail: "https://imgur.com/gSBY8op",
+// };
+
+// let p4 = {
+//   title: "Televisor",
+//   price: 70000,
+//   thumbnail: "https://imgur.com/oCD5WBs",
+// };
+
 //Clase Contenedor
 class Contenedor {
   constructor(fileName) {
