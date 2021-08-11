@@ -32,20 +32,6 @@ app.use(express.static("public"));
 //   thumbnail: "https://imgur.com/oCD5WBs",
 // };
 
-const objetoContenedor = new Contenedor("productos.json");
-
-async function allFunctionsContenedor() {
-  // await objetoContenedor.save(p1);
-  // await objetoContenedor.save(p2);
-  // await objetoContenedor.save(p3);
-  // await objetoContenedor.save(p4);
-  // await objetoContenedor.getAll();
-  //await objetoContenedor.getById(3);
-  //await objetoContenedor.deleteById(5);
-  //await objetoContenedor.deleteAll();
-}
-allFunctionsContenedor();
-
 app.get("/", (req, res) => {
   //eslint-disable-next-line no-undef
   res.sendFile(__dirName + "./public/index.html");
@@ -53,7 +39,7 @@ app.get("/", (req, res) => {
 
 //All the products
 app.get("/api/productos", async (req, res) => {
-  let productos = await objetoContenedor.getAll();
+  let productos = await this.objetoContenedor.getAll();
   res.status(200).send(productos);
 });
 
