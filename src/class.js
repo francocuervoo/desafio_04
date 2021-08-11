@@ -117,8 +117,6 @@ class Contenedor {
   }
 }
 
-const objetoContenedor = new Contenedor("productos.json");
-
 async function allFunctionsContenedor() {
   // await objetoContenedor.save(p1);
   // await objetoContenedor.save(p2);

@@ -1,5 +1,7 @@
 const Contenedor = require("./class.js");
 
+const objetoContenedor = new Contenedor("productos.json");
+
 const express = require("express"); /*Import express*/
 const app = express(); /*Server app*/
 app.use(express.json()); /*Transform to json*/
@@ -15,7 +17,7 @@ app.get("/", (req, res) => {
 
 //All the products
 app.get("/api/productos", async (req, res) => {
-  let productos = await this.objetoContenedor.getAll();
+  let productos = await objetoContenedor.getAll();
   res.status(200).send(productos);
 });
 
