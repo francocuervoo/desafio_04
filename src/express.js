@@ -4,6 +4,11 @@ const objetoContenedor = new Contenedor("productos.json");
 
 const express = require("express"); /*Import express*/
 const app = express(); /*Server app*/
+
+// No entendí bien lo del router
+// const { Router } = express;
+// const routerProducto = new Router();
+
 app.use(express.json()); /*Transform to json*/
 app.use(
   express.urlencoded({ extended: true }) /*Receives a parameter for the body*/
@@ -48,10 +53,34 @@ app.get("/api/productoRandom", async (req, res) => {
 
 // Receives and adds a product, and returns it with its assigned id
 app.post("/api/productos", async (req, res) => {
-  //No funciona
+  // No funciona, no se como hacer para que en la clase me quede el objeto con las propiedades correctas: title, price, thumbnail, id.
   const { product } = req.body;
   const productSave = await objetoContenedor.save(product);
   res.status(200).send(productSave);
+});
+
+// Receives and update a product according the id
+app.put("/api/productos/:id", async (req, res) => {
+  // No se me ocurre como armar la función de la clase que recibe y actualiza su producto según su id.
+  const { id } = req.body;
+  const productSave = await objetoContenedor.updateById(id);
+  res.status(200).send(productSave);
+});
+
+// Delete a product according the id
+app.delete("/api/productos/:id", async (req, res) => {
+  const { id } = req.params;
+  let productoId = await objetoContenedor.deleteById(id);
+  try {
+    // Funciona pero siempre devuelve "Producto no encontrado", ya que el productoId siempre me devuelve undefined
+    if (productoId) {
+      res.status(200).send(productoId);
+    } else {
+      res.status(400).json({ error: "Producto no encontrado" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const PORT = 8080;
