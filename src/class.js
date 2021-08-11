@@ -12,7 +12,7 @@ class Contenedor {
     await this.getAll();
     this.id++;
     product.id = this.id;
-    this.datos.push(product);
+    this.data.push(product);
     try {
       await fs.promises.writeFile(
         this.fileName,
