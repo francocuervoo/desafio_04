@@ -6,26 +6,14 @@
     "id": 3
   },
   {
-    "title": "Televisor",
-    "price": 70000,
+    "title": "Mesa",
+    "price": 90000,
     "thumbnail": "https://imgur.com/oCD5WBs",
-    "id": 4
-  },
-  {
-    "title": "Lavarropas",
-    "price": 60000,
-    "thumbnail": "https://imgur.com/RRNmknL",
     "id": 6
   },
   {
-    "title": "Microondas",
-    "price": 40000,
-    "thumbnail": "https://imgur.com/gSBY8op",
-    "id": 7
-  },
-  {
-    "title": "Televisor",
-    "price": 70000,
+    "title": "Coder",
+    "price": 2000,
     "thumbnail": "https://imgur.com/oCD5WBs",
     "id": 8
   },
@@ -66,12 +54,6 @@
     "id": 14
   },
   {
-    "title": "Microondas",
-    "price": 40000,
-    "thumbnail": "https://imgur.com/gSBY8op",
-    "id": 15
-  },
-  {
     "title": "Televisor",
     "price": 70000,
     "thumbnail": "https://imgur.com/oCD5WBs",
@@ -108,12 +90,6 @@
     "id": 21
   },
   {
-    "title": "Lavarropas",
-    "price": 60000,
-    "thumbnail": "https://imgur.com/RRNmknL",
-    "id": 22
-  },
-  {
     "title": "Microondas",
     "price": 40000,
     "thumbnail": "https://imgur.com/gSBY8op",
@@ -148,5 +124,59 @@
     "price": 70000,
     "thumbnail": "https://imgur.com/oCD5WBs",
     "id": 28
+  },
+  {
+    "title": "Microondas",
+    "price": 40000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 29
+  },
+  {
+    "title": "Micaela",
+    "price": 40000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 30
+  },
+  {
+    "title": "Franco",
+    "price": 4000000000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 31
+  },
+  {
+    "title": "Microondas SM",
+    "price": 30000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 32
+  },
+  {
+    "title": "Microondas SM",
+    "price": 30000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 33
+  },
+  {
+    "title": "Microondas SM",
+    "price": 30000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 34
+  },
+  {
+    "title": "Microondas SM",
+    "price": 30000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 35
+  },
+  {
+    "title": "Microondas SM",
+    "price": 30000,
+    "thumbnail": "https://imgur.com/gSBY8op",
+    "id": 36
+  },
+  {
+    "title": "PC",
+    "price": 70000,
+    "thumbnail": "https://imgur.com/oCD5WBs",
+    "id": 37
   }
 ]
