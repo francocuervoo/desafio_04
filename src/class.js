@@ -1,14 +1,14 @@
-/*Importo el módulo fs*/ const fs = require("fs");
+const fs = require("fs"); // Import module fs
 
-//Clase Contenedor
+// Contenedor class
 class Contenedor {
   constructor(fileName) {
     this.fileName = fileName;
     this.id = 0;
     this.data = [];
   }
-  //Métodos
-  async save(product) {
+  // Contenedor Methods
+  async save(product) { // Save product
     await this.getAll();
     this.id++;
     product.id = this.id;
@@ -18,20 +18,30 @@ class Contenedor {
         this.fileName,
         JSON.stringify(this.data, null, 2)
       );
-      //Devuelvo los id asignados
-      return console.log("El id del objeto ingresado es", this.id);
+      console.log("El id del objeto ingresado es", this.id);
+      return this.id; // Return id
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getById(id) {
+  async saveList(nuevaLista){ // Guardo lista
+    try{
+      await fs.promises.writeFile(this.fileName, nuevaLista) // Save file JSON
+      console.log('El archivo fue guardado con éxito.');
+      
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
+
+  async getById(id) { // Get product by id
     await this.getAll();
     try {
-      //Busco el objeto con ese id
-      const objetoId = this.data.find((dat) => dat.id == id);
+      const objetoId = this.data.find((dat) => dat.id == id); // Search object id
       if (objetoId) {
-        // return console.log("El objeto con el id", id, "es", objetoId);
+        console.log("El objeto con el id", id, "es", objetoId);
         return objetoId;
       }
     } catch (error) {
@@ -39,47 +49,42 @@ class Contenedor {
     }
   }
 
-  async getAll() {
-    //Manejo error con try catch
+  async getAll() { //Get all productos
     try {
       const data = await fs.promises.readFile(this.fileName, "utf-8");
       if (data) {
-        //Paso data a un objeto
-        this.data = JSON.parse(data);
+        this.data = JSON.parse(data); // Data to object
         this.data.map((producto) => {
-          //Obtengo cual es el id máximo del archivo
-          if (this.id < producto.id) this.id = producto.id;
+          if (this.id < producto.id) this.id = producto.id; // Nax id in the file
         });
         return this.data;
       }
     } catch (error) {
-      //Si hay un error que no retorne nada. Que siga.
       return;
     }
   }
 
-  async deleteById(id) {
+  async deleteById(id) { //Delete product by id
     try {
       const data = await fs.promises.readFile(this.fileName, "utf-8");
       if (data) {
-        //Paso data a un objeto
-        this.data = JSON.parse(data);
-        //Nuevo array sin el objeto con el id pasado
+        this.data = JSON.parse(data); // Data to object
+        // New array without the object with the id
         const objetoSinId = this.data.filter((dat) => dat.id != id);
-        //Guardo el nuevo array en el archivo
+        // Save the new array in the file
         await fs.promises.writeFile(
           this.fileName,
           JSON.stringify(objetoSinId, null, 2)
         );
         console.log(`El producto con el id ${id} fue eliminado.`);
+        return id
       }
     } catch (error) {
-      //Si hay un error que no retorne nada. Que siga.
-      return;
+      console.log(error)
     }
   }
 
-  async deleteAll() {
+  async deleteAll() { // Delete all
     this.data = [];
     try {
       await fs.promises.writeFile(
@@ -92,19 +97,44 @@ class Contenedor {
     }
   }
 
-  async updateById(producto) {
-    await this.getAll();
+  async updateById(id, newProduct) {
+    // Busco qué posición en el array de productos tiene el producto con el id buscado
+    // Tiene que ser doble == ya que solo necesito comparar el valor y no el tipo
+    let lista = await this.getAll();
+    
+    // FindIndex toma todos los elementos de la lista y comparara el id del producto con el id del parámetro
+    const index = lista.findIndex(product => product.id == id);
+
+    // Uso let ya que va a sufrir cambios la variable
+    // Los corchetes buscan el orden dentro del array
+    let producto = lista[index];
+
     try {
-      //Busco el objeto con ese id
-      const objetoId = this.data.find((dat) => dat.id == producto);
-      if (objetoId) {
-        return objetoId;
+      if (producto) {
+        //Desestructuración del nuevo producto
+        const { title, price, thumbnail } = newProduct;
+
+        //Actualizo los datos
+        producto.title = title;
+        producto.price = price;
+        producto.thumbnail = thumbnail;
+
+        //Inserto el producto modificado en la lista
+        lista[index] = producto;
+
+        const nuevaListaJson = JSON.stringify(lista , null, 2);
+        await this.saveList(nuevaListaJson)
+
+        return producto
+
       }
-    } catch (error) {
+    }
+    catch  {
       return null;
     }
   }
 }
+
 
 //Productos
 // let p1 = {
