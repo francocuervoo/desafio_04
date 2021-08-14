@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const send = (e) => {
   e.preventDefault();
 
@@ -12,18 +13,25 @@ const send = (e) => {
   };
 
   const options = {
-    methods: "POST",
+    method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data), /*Lo paso a JSON */
+    body: JSON.stringify(data) /*Lo paso a JSON */,
   };
 
   fetch("/api/productos", options)
     .then((res) => res.json())
     .then((data) =>
-      alert("Nuevo producto agregado: \n Título: " + JSON.stringify(data.title))
+      alert(
+        "Nuevo producto agregado: \n Título: " +
+          JSON.stringify(data.title) +
+          "\n Precio: $" +
+          data.price +
+          "\n ID: " +
+          data.id
+      )
     )
     .then(() => {
       document.getElementById("title").value = "";
