@@ -18,11 +18,13 @@
 
     <h1>Ingrese el producto</h1>
     <form action="/productos" method="POST">
-        <input type="text" name="persona" placeholder="Nombre" required><br>
-        <input type="text" name="persona" placeholder="Precio" required><br>
-        <input type="text" name="persona" placeholder="URL imagen" required><br>        
-        <button type="submit">Subir producto</button>
+        <input type="text" name="title" id="title" placeholder="Nombre" required><br>
+        <input type="number" name="price" id="price" placeholder="Precio" required><br>
+        <input type="text" name="thumbnail" id="thumbnail" placeholder="URL imagen" required><br>        
+        <button value="Enviar" onclick="send(event)">Subir producto</button>
     </form>
+
+    <script src="./js/send.js"></script>
 
 </body>
 
